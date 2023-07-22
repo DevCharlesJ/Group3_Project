@@ -31,4 +31,4 @@ def products(request):
 
 
 def home(request):
-    return render(request, 'bakery/index.html')
+    return render(request, 'bakery/index.html', {'page_name': 'Home'})

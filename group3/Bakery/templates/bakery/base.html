@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
         <title>
             {% if page_name %}
                 Henze Bakery - {{page_name}}
@@ -13,27 +13,44 @@
         </title>
     </head>
     <body>
-        <header class="page-header">
-            <div class="container">
-                <h1><a href="/">Henze Bakery</a></h1>
-            </div>
-        </header>
-        <nav>
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/about">About us</a>
-        </nav>
-
-        <div id="customer-section">
-            <a href="/cart">
-                <img alt="Shopping Cart">
-            </a>
-            <!-- if logged in -->
-                <!-- Customer name-->
-                <!-- <button>Logout</button> -->
-            <!-- else -->
-                <button>Login</button>
+        <div id="page-header">
+            <h1><a href="/">Henze Bakery</a></h1>
         </div>
+        <div id="main-nav">
+            <div id="nav-container">
+                <nav>
+                    {% if page_name == 'Home' %}
+                        <a class="selected-nav" href="/">Home</a>
+                    {% else %}
+                        <a href="/">Home</a>
+                    {% endif %}
+
+                    {% if page_name == 'Products' %}
+                        <a class="selected-nav" href="/products">Products</a>
+                    {% else %}
+                        <a href="/products">Products</a>
+                    {% endif %}
+
+                    {% if page_name == 'About' %}
+                        <a class="selected-nav" href="/about">About us</a>
+                    {% else %}
+                        <a href="/about">About us</a>
+                    {% endif %}
+                </nav>
+            </div>
+            <div id="customer-section">
+                <a id='cart-section' href="/cart">
+                    <img id="cart-img" src="{% static 'images/cart.png' %}" alt="Shopping Cart">
+                </a>
+                <!-- if logged in -->
+                    <!-- Customer name-->
+                    <!-- <button>Logout</button> -->
+                <!-- else -->
+                    <button>Login</button>
+            </div>
+        </div>
+
+        
         
         <main class="main-container">
             {% block content %}

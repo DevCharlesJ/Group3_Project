@@ -1,0 +1,88 @@
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Lobster&family=Pacifico&display=swap');
+
+#main-nav {
+    position: relative;
+    height: 4em;
+    border-bottom: 0.1em solid black;
+    /* overflow: ; */
+}
+
+#nav-container {
+    display: flex;
+    justify-content: center;
+    margin:auto;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right:0;
+    top:0;
+    transform: translateY(40%);
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    /* border-top: 0.1em solid red;
+    border-left: 0.1em solid red;
+    border-right: 0.1em solid red; */
+    height:60%; /* This is the inverse of nav-container's transform Y-translation*/
+}
+
+
+
+nav a {
+    font-size: 2em;
+    text-decoration: none;
+    height:1.2em;
+    
+    margin-left: 0.1em;
+    margin-right: 0.1em;
+    padding-left: 0.25em;
+    padding-right:0.25em;
+    /* border-top-left-radius: ; */
+}
+
+/* Special styling for nav where page is selected */
+.selected-nav {
+    background-color:white;
+    border: 0.1em solid black;
+    border-bottom: 0em;
+    border-radius: 0.3em 0.3em 0em 0em;
+}
+
+nav a:visited {
+    color: black;
+}
+
+#page-header h1 {
+    color: black;
+    position: relative;
+    left: 0;
+    margin-bottom:0;
+    font-family: 'Alex Brush', cursive;
+    font-size: 4em;
+}
+
+#page-header h1 a {
+    text-decoration: none;
+}
+
+#page-header h1 a:visited{
+    color: black;
+}
+
+#customer-section {
+    display: flex;
+    float: right;
+    transform: translateY(40%);
+}
+
+#cart-section {
+    text-decoration: none;
+}
+
+#cart-section img {
+    width: 5em;
+    height: 2.5em;
+}
