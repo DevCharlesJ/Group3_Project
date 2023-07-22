@@ -1,11 +1,24 @@
 {% extends 'Bakery/base.html' %}
 
+{% load static %}
+
 {% block content %}
 <br>
+<style>
+    .image-container {
+        width: 300px; /* Set the desired width for the image */
+        height: 200px; /* Set the desired height for the image */
+    }
+
+    .image-container img {
+        max-width: 100%;
+        max-height: 100%;
+    }
+</style>
 <div>
     <div id="main-info">
-        <img id="business-location" alt="Need map with location">
-        <img id="business-logo" alt="Need business logo">
+        <img id="maplocation-img" src="{% static 'images/maplocation.png' %}" alt="Business Location">
+        <img id="logo-img" src="{% static 'images/logo.png' %}" alt="Business Logo">
     </div>
 <div>
 {% endblock %}
