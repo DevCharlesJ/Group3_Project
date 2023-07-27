@@ -39,14 +39,27 @@
                 </nav>
             </div>
             <div id="customer-section">
-                <a id='cart-section' href="/cart">
-                    <img id="cart-img" src="{% static 'images/cart.png' %}" alt="Shopping Cart">
-                </a>
-                <!-- if logged in -->
-                    <!-- Customer name-->
-                    <!-- <button>Logout</button> -->
-                <!-- else -->
-                    <button>Login</button>
+                {% if user.is_authenticated %}
+                    <p style="text-align: center;">Logged in as {{user.first_name}}</p>
+                {% else %}
+                    <p style="text-align: center;">Not logged in</p>
+                {% endif %}
+                <div id="actions">
+                    <a id='cart-section' href="/cart">
+                        <img id="cart-img" src="{% static 'images/cart.png' %}" alt="Shopping Cart">
+                    </a>
+                    {% if user.is_authenticated %}
+                        <form method="POST" action="{% url 'customer_logout' %}">
+                            {% csrf_token %}
+                            <button style="height:3em">Logout</button>
+                        </form>
+                    {% else %}
+                        <form method="POST" action="{% url 'customer_login' %}">
+                            {% csrf_token %}
+                            <button style="height:3em">Login</button>
+                        </form>
+                    {% endif %}
+                </div>
             </div>
         </div>
 

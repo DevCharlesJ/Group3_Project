@@ -50,6 +50,14 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'
+SESSION_COOKIE_SECURE = False # This is an HTTP project
+
+AUTHENTICATION_BACKENDS = [
+    'Bakery.backends.CustomerBackend',
+    'django.contrib.auth.backends.ModelBackend',
+]
+
 ROOT_URLCONF = 'group3.urls'
 
 TEMPLATES = [
