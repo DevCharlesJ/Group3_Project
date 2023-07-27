@@ -21,9 +21,9 @@ class Product(models.Model):
     
 
 class Customer(models.Model):
-    id = models.IntegerField(primary_key=True)
-    username = models.CharField(max_length=80)
-    email = models.EmailField(max_length=80)
+    first_name = models.CharField(max_length=80)
+    last_name = models.CharField(max_length=80)
+    email = models.EmailField(max_length=80, primary_key=True)
     password = models.CharField(max_length=80)
 
     def getCart():
@@ -35,7 +35,7 @@ class Shopping_Cart(models.Model):
     id = models.IntegerField(primary_key=True)
 
     # A shopping car must belong to at most 1 customer
-    customer = models.OneToOneField(Customer, on_delete=models.CASCADE)
+    customer = models.OneToOneField(Customer, on_delete=models.CASCADE, db_column='email')
 
     def getTotal(self) -> float:
         # need to query shopping items and sum all collective costs
