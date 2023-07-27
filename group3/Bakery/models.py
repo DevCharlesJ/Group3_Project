@@ -23,7 +23,7 @@ class Product(models.Model):
 class Customer(models.Model):
     first_name = models.CharField(max_length=80)
     last_name = models.CharField(max_length=80)
-    email = models.EmailField(max_length=80, primary_key=True)
+    email = models.EmailField(max_length=80, primary_key=True, unique=True)
     password = models.CharField(max_length=80)
 
     def getCart():
