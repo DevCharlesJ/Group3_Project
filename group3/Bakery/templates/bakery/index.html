@@ -1,11 +1,17 @@
 {% extends 'Bakery/base.html' %}
 
+{% load static %}
+
 {% block content %}
 <br>
 <div>
     <div id="main-info">
-        <img id="business-location" alt="Need map with location">
-        <img id="business-logo" alt="Need business logo">
+        <img id="maplocation-img" src="{% static 'images/maplocation.png' %}" alt="Business Location" style="width: 450px; height: 350px;">
+        <img id="logo-img" src="{% static 'images/logo.png' %}" alt="Business Logo" style="position: absolute; top: 200px; right: 50px; width: 500px; height: 250px;">
+    </div>
+    <div class="text-box" style="position: absolute; top: 600px; left: 50px; width: 200px; height: 100px; background-color: #f0f0f0; border: 2px solid #333; padding: 10px; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.4;">
+        Bakery News.<br>
+        We can add fake news here to fill some space.
     </div>
 <div>
 {% endblock %}
