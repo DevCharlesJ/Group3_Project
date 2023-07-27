@@ -1,10 +1,19 @@
 /* Import Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Alex+Brush&family=Great+Vibes&family=Lobster&family=Pacifico&display=swap');
 
+
+
+body {
+    background-color: ghostwhite;
+    padding: 0; 
+    margin:0;
+}
+
 #main-nav {
+    background-color: ghostwhite;
     position: relative;
-    height: 4em;
-    border-bottom: 0.1em solid black;
+    height: 6em;
+    border-bottom: 0.1em solid blue;
     /* overflow: ; */
 }
 
@@ -17,7 +26,7 @@
     left: 0;
     right:0;
     top:0;
-    transform: translateY(40%);
+    transform: translateY(60%);
 }
 
 nav {
@@ -26,12 +35,12 @@ nav {
     /* border-top: 0.1em solid red;
     border-left: 0.1em solid red;
     border-right: 0.1em solid red; */
-    height:60%; /* This is the inverse of nav-container's transform Y-translation*/
 }
 
 
 
 nav a {
+    color: black;
     font-size: 2em;
     text-decoration: none;
     height:1.2em;
@@ -46,16 +55,17 @@ nav a {
 /* Special styling for nav where page is selected */
 .selected-nav {
     background-color:white;
-    border: 0.1em solid black;
+    border: 0.08em solid blue;
     border-bottom: 0em;
     border-radius: 0.3em 0.3em 0em 0em;
 }
 
-nav a:visited {
-    color: black;
-}
+/* nav a:visited {
+    color: blue;
+} */
 
 #page-header h1 {
+    background-color: ghostwhite;
     color: black;
     position: relative;
     left: 0;
@@ -65,17 +75,19 @@ nav a:visited {
 }
 
 #page-header h1 a {
+    color: blue;
     text-decoration: none;
-}
-
-#page-header h1 a:visited{
-    color: black;
 }
 
 #customer-section {
     display: flex;
+    flex-direction: column;
     float: right;
-    transform: translateY(40%);
+}
+
+#actions {
+    display: flex;
+    flex-direction: row;
 }
 
 #cart-section {
