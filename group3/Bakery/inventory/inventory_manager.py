@@ -65,8 +65,17 @@ def import_products(file, save_instances=True):
     for row_data in read_csv(file)[1:]:
         name, price, description = row_data
 
+        pt_name = ""
+        if file == CAKES_FILE:
+            pt_name = "Cakes"
+        elif file == COOKIES_FILE:
+            pt_name = "Cookies"
+
+        pt = Product_Type.objects.get(name=pt_name) if pt_name else None
+
         instance = Product(
             id=product_count,
+            product_type=pt,
             name=name,
             price=price,
             description=description
@@ -79,9 +88,8 @@ def import_products(file, save_instances=True):
         print("Imported:", instance.name, "(SAVED)" if save_instances else "(NOT SAVED)")
 
 
-
 # IMPORTS
 # import_product_types() # LAST IMPORT 7/28/2023 12:51 PM
 
-# import_products(CAKES_FILE) # LAST IMPORT 7/28/2023 2:05 PM
-# import_products(COOKIES_FILE) # LAST IMPORT 7/28/2023 2:10 PM
+# import_products(CAKES_FILE) # LAST IMPORT 7/28/2023 5:00 PM
+# import_products(COOKIES_FILE) # LAST IMPORT 7/28/2023 5:00 PM
