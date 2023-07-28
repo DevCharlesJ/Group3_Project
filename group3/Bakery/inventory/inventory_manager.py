@@ -72,7 +72,6 @@ def import_products(file, save_instances=True):
             description=description
         )
 
-        print(product_count)
         if save_instances:
             instance.save()
         
