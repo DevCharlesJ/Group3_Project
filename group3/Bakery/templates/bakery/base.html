@@ -14,51 +14,53 @@
     </head>
     <body>
         <div id="page-header">
-            <h1><a href="/">Henze Bakery</a></h1>
-        </div>
-        <div id="main-nav">
-            <div id="nav-container">
-                <nav>
-                    {% if page_name == 'Home' %}
-                        <a class="selected-nav" href="/">Home</a>
-                    {% else %}
-                        <a href="/">Home</a>
-                    {% endif %}
-
-                    {% if page_name == 'Products' %}
-                        <a class="selected-nav" href="/products">Products</a>
-                    {% else %}
-                        <a href="/products">Products</a>
-                    {% endif %}
-
-                    {% if page_name == 'About' %}
-                        <a class="selected-nav" href="/about">About us</a>
-                    {% else %}
-                        <a href="/about">About us</a>
-                    {% endif %}
-                </nav>
-            </div>
-            <div id="customer-section">
-                {% if user.is_authenticated %}
-                    <p style="text-align: center;">Logged in as {{user.first_name}}</p>
-                {% else %}
-                    <p style="text-align: center;">Not logged in</p>
-                {% endif %}
-                <div id="actions">
-                    <a id='cart-section' href="/cart">
-                        <img id="cart-img" src="{% static 'images/cart.png' %}" alt="Shopping Cart">
-                    </a>
+            <div id="main-header">
+                <h1><a href="/">Henze Bakery</a></h1>
+                <div id="customer-section">
                     {% if user.is_authenticated %}
-                        <form method="POST" action="{% url 'customer_logout' %}">
-                            {% csrf_token %}
-                            <button style="height:3em">Logout</button>
-                        </form>
+                        <p style="text-align: center;"><strong>Hi {{user.first_name}}!</strong></p>
                     {% else %}
-                        <form method="POST" action="{% url 'customer_login' %}">
-                            {% csrf_token %}
-                            <button style="height:3em">Login</button>
-                        </form>
+                        <p style="text-align: center;"><strong>Not logged in</strong></p>
                     {% endif %}
+                    <div id="actions">
+                        <a id='cart-section' href="{% url 'cart' %}">
+                            <img id="cart-img" src="{% static 'images/cart.png' %}" alt="Shopping Cart">
+                        </a>
+                        {% if user.is_authenticated %}
+                            <form method="POST" action="{% url 'customer_logout' %}">
+                                {% csrf_token %}
+                                <button class="login-logout">Logout</button>
+                            </form>
+                        {% else %}
+                            <form method="POST" action="{% url 'customer_login' %}">
+                                {% csrf_token %}
+                                <button class="login-logout">Login</button>
+                            </form>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            <div id="main-nav">
+                <div id="nav-container">
+                    <nav>
+                        {% if page_name == 'Home' %}
+                            <a class="selected-nav" href="/">Home</a>
+                        {% else %}
+                            <a href="/">Home</a>
+                        {% endif %}
+
+                        {% if page_name == 'Products' %}
+                            <a class="selected-nav" href="/products">Products</a>
+                        {% else %}
+                            <a href="/products">Products</a>
+                        {% endif %}
+
+                        {% if page_name == 'About' %}
+                            <a class="selected-nav" href="/about">About us</a>
+                        {% else %}
+                            <a href="/about">About us</a>
+                        {% endif %}
+                    </nav>
                 </div>
             </div>
         </div>

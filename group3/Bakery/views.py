@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect
 from .models import *
 from .forms import CustomerRegister, CustomerLogin
 from django.contrib.auth import authenticate, login as auth_login
+from django.contrib.auth.decorators import login_required
 from django.db import IntegrityError
 from django.urls import reverse
 
@@ -73,8 +74,11 @@ def cart(request):
         'page_name': 'Cart',
     }
     context.update(load_customer_userdata(request.session))
-
-    return render(request, 'bakery/cart.html', context)
+    if context.get('user', None) is not None:
+        return render(request, 'bakery/cart.html', context)
+    else:
+        # User is not logged in
+        return redirect(reverse('customer_login'))
 
 
 def product(request, id):

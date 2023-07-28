@@ -4,16 +4,80 @@
 
 
 body {
-    background-color: ghostwhite;
     padding: 0; 
     margin:0;
 }
 
-#main-nav {
+#page-header {
     background-color: ghostwhite;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-bottom: 0.1em solid blue;
+}
+
+#main-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#main-header h1 {
+    background-color: ghostwhite;
+    color: black;
+    position: relative;
+    left: 0;
+    margin-bottom:0;
+    font-family: 'Alex Brush', cursive;
+    font-size: 4em;
+}
+
+#main-header h1 a {
+    color: blue;
+    text-decoration: none;
+}
+
+#customer-section {
+    display: flex;
+    flex-direction: column;
+    float: right;
+    width: 10em;
+}
+
+#actions {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+#cart-section {
+    text-decoration: none;
+}
+
+#cart-section img {
+    background-color: transparent;
+    width: 5em;
+    height: 2.5em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    /* border: 0.1em solid blue; */
+    border-radius: 100px;
+}
+
+#cart-section img:hover {
+    background-color: lightblue;
+}
+
+.login-logout {
+    padding: 2em 1em 2em 1em;
+    border: none;
+    border-radius: 40%;
+}
+
+
+#main-nav {
     position: relative;
     height: 6em;
-    border-bottom: 0.1em solid blue;
+    
     /* overflow: ; */
 }
 
@@ -36,7 +100,6 @@ nav {
     border-left: 0.1em solid red;
     border-right: 0.1em solid red; */
 }
-
 
 
 nav a {
@@ -64,37 +127,11 @@ nav a {
     color: blue;
 } */
 
-#page-header h1 {
-    background-color: ghostwhite;
-    color: black;
-    position: relative;
-    left: 0;
-    margin-bottom:0;
-    font-family: 'Alex Brush', cursive;
-    font-size: 4em;
-}
 
-#page-header h1 a {
-    color: blue;
-    text-decoration: none;
-}
 
-#customer-section {
-    display: flex;
-    flex-direction: column;
-    float: right;
-}
-
-#actions {
-    display: flex;
-    flex-direction: row;
-}
-
-#cart-section {
-    text-decoration: none;
-}
-
-#cart-section img {
-    width: 5em;
-    height: 2.5em;
+.main-container {
+    /* background: white; */
+    width:85%;
+    margin-left: auto;
+    margin-right: auto;
 }
