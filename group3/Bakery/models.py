@@ -58,7 +58,7 @@ class Product(models.Model):
 
     # Each product can only refer to zero or 1 product type
     product_type = models.OneToOneField(Product_Type, on_delete=models.SET_NULL, null=True)
-    name = models.CharField(max_length=120, unique=True)
+    name = models.CharField(max_length=120)
     description = models.CharField(max_length=350, null=True)
     price = models.FloatField(
         validators=[MinValueValidator(0.0)]
