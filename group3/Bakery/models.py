@@ -96,11 +96,11 @@ class Shopping_Cart(models.Model):
 class Shopping_Item(models.Model):
 
     # Each shopping item must belong to at most 1 shopping cart
-    shopping_cart = models.OneToOneField(Shopping_Cart, related_name="shopping_cart", on_delete=models.CASCADE)
+    shopping_cart = models.ForeignKey(Shopping_Cart, related_name="shopping_cart", on_delete=models.CASCADE)
     
     # It shopping item must refer to at most 1 product
-    product = models.OneToOneField(Product, related_name="product", on_delete=models.CASCADE)
-    quantity = models.IntegerField(null=True)
+    product = models.ForeignKey(Product, related_name="product", on_delete=models.CASCADE)
+    quantity = models.IntegerField(default=1, null=True)
     # Max_quantity?
 
     class Meta:
