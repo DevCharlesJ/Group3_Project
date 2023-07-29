@@ -5,14 +5,13 @@
 }
 
 .product-card {
-    position: relative;
     display:inline-block;
     border: 0.1em solid #333;
     border-radius: 10px;
     box-shadow: 1px;
 
     width: 8em;
-    height: 13em;
+    height: 15em;
 
     margin-left: 0.5em;
     margin-right: 0.5em;
@@ -25,20 +24,18 @@
     text-decoration: none;
 }
 
-.product-card-logo {
+/* .product-card-logo {
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-}
+} */
 
 .product-card img {
-    width: 5em;
-    height: 5em;
+    width: 8em;
+    height: 8em;
 }
 
 .product-card-info{
-    position: absolute;
-    bottom: 0;
     width: 80%;
     margin-left: auto;
     margin-right:auto;

@@ -6,12 +6,21 @@
 <head>
     <link rel="stylesheet" href="{% static 'css/product.css' %}?={% now 'U' %}">
 </head>
-<div>
-    {{product.name}}
-    <form method="POST" action="">
-        {% csrf_token %}
-        <input type="hidden" name="product_id" value="{product.id}">
-        <button type="submit">Add to cart</button>
-    </form>
+<div id="main-wrap">
+    <img src="{% static 'images/'|add:product.name|add:'.jpg' %}">
+
+    <div id="product-info">
+        <h2><strong>{{product.name}}</strong></h2>
+        <p>{{product.description}}</p>
+
+        <form method="POST" action="{% url 'add_to_cart' %}">
+            {% csrf_token %}
+            <input type="hidden" name="product_id" value="{{product.id}}">
+            <button id="add_btn" type="submit">Add to cart</button>
+        </form>
+        {% if added %}
+            <p style="color: green;">Added!</p>
+        {% endif %}
+    </div>
 </div>
 {% endblock %}

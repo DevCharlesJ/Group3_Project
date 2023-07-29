@@ -93,15 +93,46 @@ def about(request):
 def cart(request):
     context = {
         'page_name': 'Cart',
+        'items': []
     }
     context.update(load_customer_userdata(request.session))
+
     if context.get('user', None) is not None:
+        customer:Customer = context['user']
+        try:
+            cart:Shopping_Cart = Shopping_Cart.objects.get(customer=customer)
+        except:
+            return HttpResponse("Shopping cart not found", status=400)
+
+        print(cart)
+        try:
+            for item in Shopping_Item.objects.filter(shopping_cart=cart):
+                print(item, 1)
+                context['items'].append(item)
+        except: pass
+
+        print(context['items'])
+
         return render(request, 'bakery/cart.html', context)
     else:
         # User is not logged in
         return redirect(reverse('customer_login'))
     
-def add_product_to_cart(request):
+
+
+
+
+def product(request, id, added=False):
+    context = {
+        'page_name': 'Products',
+        'product': Product.objects.get(id=id),
+        'added': added # this is so wrong
+    }
+    context.update(load_customer_userdata(request.session))
+    
+    return render(request, "bakery/product.html", context)
+
+def add_to_cart(request):
     if request.method == 'POST':
         product_id = request.POST.get('product_id')
 
@@ -117,36 +148,22 @@ def add_product_to_cart(request):
                 return HttpResponse("Shopping cart not found", status=400)
             
             try:
-                product = Product.objects.get(id=product_id)
+                p = Product.objects.get(id=int(product_id))
             except:
                 return HttpResponse("Product not found", status=400)
 
             try:
                 # Check if shopping item exists
-                shopping_item  = Shopping_Item.objects.get(shopping_cart=cart, product=product)
+                shopping_item  = Shopping_Item.objects.get(shopping_cart=cart, product=p)
                 shopping_item.increaseQuantityBy(1) # accumulate quantity by 1
             except:
                 # Create new shopping item
-                shopping_item = Shopping_Item(shopping_cart=cart, product=product)
-
-            print(shopping_item.getCollectiveCost())
+                shopping_item = Shopping_Item(shopping_cart=cart, product=p)
                 
 
-            return HttpResponse("OK", status=200)
+            return product(request, int(product_id), added=True)
         
         return HttpResponse("Error processing request", status=400)
-
-
-
-
-def product(request, id):
-    context = {
-        'page_name': 'Products',
-        'product': Product.objects.get(id=id)
-    }
-    context.update(load_customer_userdata(request.session))
-    
-    return render(request, "bakery/product.html", context)
 
 
 def products(request):

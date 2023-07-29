@@ -7,5 +7,12 @@
     <link rel="stylesheet" href="{% static 'css/cart.css' %}?={% now 'U' %}">
 </head>
 <br>
-<div>This is the Cart page<div>
+Not finished :(
+<!-- <div>
+    {% for item in items %}
+        <p>{{item.product.name}}</p>
+        <p>{{item.quantity}}</p>
+        <p>{{item.getCollectiveCost}}</p>
+    {% endfor %}
+<div> -->
 {% endblock %}
