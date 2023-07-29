@@ -3,18 +3,21 @@
 {% load static %}
 
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/home.css' %}?={% now 'U' %}">
+</head>
 <br>
 <div>
     <div id="main-info">
-        <img id="maplocation-img" src="{% static 'images/maplocation.png' %}" alt="Business Location" style="width: 450px; height: 350px;">
-        <img id="logo-img" src="{% static 'images/logo.png' %}" alt="Business Logo" style="position: absolute; top: 300px; right: 50px; width: 500px; height: 250px;">
+        <img id="maplocation-img" src="{% static 'images/maplocation.png' %}" alt="Business Location" class="maplocation">
+        <img id="logo-img" src="{% static 'images/logo.png' %}" alt="Business Logo" class="logo">
     </div>
-    <div class="text-box" style="position: absolute; top: 600px; left: 50px; width: 200px; height: 100px; background-color: #f0f0f0; border: 2px solid #333; padding: 10px; font-family: Arial, sans-serif; font-size: 16px; line-height: 1.4;">
-        Bakery News.<br>
-        We can add fake news here to fill some space.
-        {% if user.is_authenticated %}
-            Hello user
-        {% endif %}
+    <div >
+        <div class="text-box">
+            {% for line in news_document %}
+                <p>{{line}}</p>
+            {% endfor %}
+        </div>
     </div>
 <div>
 {% endblock %}

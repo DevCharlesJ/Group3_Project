@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css">
+        <link rel="stylesheet" href="{% static 'css/base.css' %}?={% now 'U' %}" type="text/css">
         <title>
             {% if page_name %}
                 Henze Bakery - {{page_name}}

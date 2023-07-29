@@ -1,6 +1,11 @@
 {% extends 'Bakery/base.html' %}
 
+{% load static %}
+
 {% block content %}
+<head>
+    <link rel="stylesheet" href="{% static 'css/cart.css' %}?={% now 'U' %}">
+</head>
 <br>
 <div>This is the Cart page<div>
 {% endblock %}

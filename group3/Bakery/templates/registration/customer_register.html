@@ -1,16 +1,21 @@
 {% extends "Bakery/base.html" %}
 
+{% load static %}
+
 {% block content %}
-    <div id="portal">
-        <header>
-            <h3>Create an account</h3>
-        </header>
+<head>
+    <link rel="stylesheet" href="{% static 'css/customer_register.css' %}?={% now 'U' %}">
+</head>
+<div id="portal">
+    <header>
+        <h3>Create an account</h3>
+    </header>
 
-        <form method="post" action="{% url 'customer_register' %}">
-            {% csrf_token %}
-            {{form.as_p}}
+    <form method="post" action="{% url 'customer_register' %}">
+        {% csrf_token %}
+        {{form.as_p}}
 
-            <input type="submit" value="Create" />
-        </form>
-    </div>
+        <input type="submit" value="Create" />
+    </form>
+</div>
 {% endblock %}
